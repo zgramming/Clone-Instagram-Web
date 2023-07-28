@@ -18,5 +18,11 @@
         "react"
     ],
     "rules": {
+        "no-unused-vars":"error",
+        "no-unused-labels":"error",
+        "no-undef":"error",
+        "prefer-const":"error",
+        "prefer-rest-params":"error",
+        "prefer-spread":"error"
     }
 }

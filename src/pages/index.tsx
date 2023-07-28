@@ -1,20 +1,22 @@
+import { Carousel } from '@mantine/carousel';
 import { ActionIcon, AspectRatio, Avatar, Group, MantineNumberSize, Stack } from '@mantine/core';
 import {
   IconBookmark,
   IconBrowser,
   IconDots,
   IconHeart,
-  IconHome,
   IconHome2,
   IconMessageCircle,
-  IconPhoto,
+  IconPlayerPlayFilled,
   IconPlus,
   IconSearch,
   IconSend,
   IconSquareRoundedPlus,
-  IconVideo,
+  IconVolume,
+  IconVolume3,
 } from '@tabler/icons-react';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 function NavigationBar() {
   return (
@@ -87,9 +89,150 @@ function Story() {
   );
 }
 
-function Posts() {
+function PostItemContentImage({ urls }: { urls: string[] }) {
+  const isMoreThanOne = urls.length > 1;
+
+  if (isMoreThanOne) {
+    return (
+      <div className="relative">
+        <AspectRatio ratio={1 / 1}>
+          <Carousel withIndicators>
+            {urls.map((url) => (
+              <Carousel.Slide key={url}>
+                <img height={'100%'} width={'100%'} alt="Image / Video Post" src={url} />
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        </AspectRatio>
+      </div>
+    );
+  }
+
   return (
-    <Stack spacing={'xs'} className="pb-52">
+    <AspectRatio ratio={1 / 1}>
+      <Image
+        alt="Image / Video Post"
+        src={urls[0]}
+        layout="fill"
+        style={{
+          objectFit: 'cover',
+        }}
+      />
+    </AspectRatio>
+  );
+}
+
+function PostItemContentVideoItem({ url }: { url: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const onClick = () => {
+    // Toggle Play and pause
+    if (ref.current) {
+      if (ref.current.paused) {
+        // Set isPlaying to true
+        setIsPlaying(true);
+        ref.current.play();
+      } else {
+        // Set isPlaying to false
+        setIsPlaying(false);
+        ref.current.pause();
+      }
+    }
+  };
+
+  const onMute = () => {
+    if (ref.current) {
+      if (ref.current.muted) {
+        setIsMuted(false);
+        ref.current.muted = false;
+      } else {
+        setIsMuted(true);
+        ref.current.muted = true;
+      }
+    }
+  };
+
+  // Detect if video has ended
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.addEventListener('ended', () => {
+        // Play it again
+        ref.current?.play();
+      });
+    }
+    return () => {
+      ref.current?.removeEventListener('ended', () => {});
+    };
+  }, []);
+
+  return (
+    <div className="relative">
+      <video ref={ref} height={'100%'} width={'100%'} onClick={onClick}>
+        <source src={url} type="video/mp4" />
+      </video>
+
+      <div className="absolute left-[45%] top-[40%]">
+        {
+          // Show play icon if video is not playing
+          !isPlaying && <IconPlayerPlayFilled size="4rem" color="white" className="text-white" onClick={onClick} />
+        }
+      </div>
+
+      <div className="absolute bottom-5 right-5 rounded-full bg-gray-700 ">
+        <ActionIcon size={'xs'} onClick={onMute} className="hover:bg-gray-700">
+          {isMuted ? <IconVolume3 size="1rem" color="white" /> : <IconVolume size="1rem" color="white" />}
+        </ActionIcon>
+      </div>
+    </div>
+  );
+}
+
+function PostItemContentVideo({ urls }: { urls: string[] }) {
+  const isMoreThanOne = urls.length > 1;
+
+  if (isMoreThanOne) {
+    return (
+      <div className="relative">
+        <AspectRatio ratio={16 / 9}>
+          <Carousel withIndicators>
+            {urls.map((url) => (
+              <Carousel.Slide key={url}>
+                <PostItemContentVideoItem url={url} />
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        </AspectRatio>
+      </div>
+    );
+  } else {
+    return (
+      <AspectRatio ratio={16 / 9}>
+        <PostItemContentVideoItem url={urls[0]} />
+      </AspectRatio>
+    );
+  }
+}
+
+function PostItem({ type }: { type: 'image' | 'video' }) {
+  const dummyVideoURL = [
+    'https://www.w3schools.com/html/mov_bbb.mp4',
+    'https://www.w3schools.com/html/mov_bbb.mp4',
+    'https://www.w3schools.com/html/mov_bbb.mp4',
+  ];
+  const dummyImageURL = [
+    'https://picsum.photos/seed/1/200',
+    'https://picsum.photos/seed/2/200',
+    'https://picsum.photos/seed/3/200',
+    'https://picsum.photos/seed/4/200',
+    'https://picsum.photos/seed/5/200',
+  ];
+  // const dummyImageURL = ['https://picsum.photos/seed/1/200'];
+
+  const src = type === 'image' ? dummyImageURL : dummyVideoURL;
+  return (
+    <Stack spacing={'xs'} className="pb-5">
       <div className="flex flex-row items-center px-5">
         <div className="flex flex-row items-center gap-3">
           <AvatarImage
@@ -104,16 +247,7 @@ function Posts() {
           </ActionIcon>
         </div>
       </div>
-      <AspectRatio ratio={1 / 1}>
-        <Image
-          alt="Image / Video Post"
-          src={'https://picsum.photos/seed/1/200'}
-          style={{
-            objectFit: 'cover',
-          }}
-          fill
-        />
-      </AspectRatio>
+      {type === 'image' ? <PostItemContentImage urls={dummyImageURL} /> : <PostItemContentVideo urls={src} />}
       <Stack spacing={'xs'} className="px-5 py-1">
         <div className="flex flex-row items-center">
           <div className="grow flex flex-row items-center gap-4">
@@ -146,6 +280,18 @@ function Posts() {
   );
 }
 
+function Posts() {
+  const dummy = Array.from({ length: 3 });
+  return (
+    <>
+      {dummy.map((_, index) => {
+        let type = index % 2 === 0 ? 'image' : ('video' as 'image' | 'video');
+        return <PostItem type={type} />;
+      })}
+    </>
+  );
+}
+
 function BottomNavigationBar() {
   return (
     <div className="fixed bottom-0 left-0 w-full h-14 flex flex-row justify-between items-center bg-white shadow-md px-10">
@@ -168,7 +314,7 @@ function BottomNavigationBar() {
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative pb-32">
       <Stack spacing={'xs'} className="relative">
         <NavigationBar />
         <Story />
