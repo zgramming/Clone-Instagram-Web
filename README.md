@@ -1,38 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Logo](github/background.png)
 
-## Getting Started
+# Cloning Instagram Web
 
-First, run the development server:
+Cloning Instagram Web
+
+## Tech Stack
+
+**Client:** Typescript, Next JS, Redux Toolkit, Socket IO Client, Mantine UI, Tailwind CSS
+
+**Server:** Express, TypeORM, Socket IO
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+- `BASE_URL_API`
+
+## Installation
+
+Install application with NPM
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  npm i
+  npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Demo
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Roadmap
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [ ] Play video when element visible in viewport
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+[MIT](https://choosealicense.com/licenses/mit/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Related
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Here are some related projects
 
-## Deploy on Vercel
+## Support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For support, email zeffry.reynando@gmail.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Authors
+
+- [@zgramming](https://github.com/zgramming)

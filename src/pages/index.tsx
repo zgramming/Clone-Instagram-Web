@@ -215,6 +215,26 @@ function PostItemContentVideo({ urls }: { urls: string[] }) {
   }
 }
 
+function PostItemHeader() {
+  return (
+    <div className="flex flex-row items-center px-5">
+      <div className="flex flex-row items-center gap-3">
+        <AvatarImage
+          className={'border-[3px] border-solid border-pink-700'}
+          src={`https://picsum.photos/seed/1/200`}
+          size={'md'}
+        />
+        <div className="text-sm font-medium">Username</div>
+      </div>
+      <div className="grow flex justify-end">
+        <ActionIcon>
+          <IconDots size="1.5rem" color="black" />
+        </ActionIcon>
+      </div>
+    </div>
+  );
+}
+
 function PostItem({ type }: { type: 'image' | 'video' }) {
   const dummyVideoURL = [
     'https://www.w3schools.com/html/mov_bbb.mp4',
@@ -233,20 +253,7 @@ function PostItem({ type }: { type: 'image' | 'video' }) {
   const src = type === 'image' ? dummyImageURL : dummyVideoURL;
   return (
     <Stack spacing={'xs'} className="pb-5">
-      <div className="flex flex-row items-center px-5">
-        <div className="flex flex-row items-center gap-3">
-          <AvatarImage
-            className={'border-[3px] border-solid border-pink-700'}
-            src={`https://picsum.photos/seed/1/200`}
-          />
-          <div className="text-sm font-medium">Username</div>
-        </div>
-        <div className="grow flex justify-end">
-          <ActionIcon>
-            <IconDots size="1.5rem" color="black" />
-          </ActionIcon>
-        </div>
-      </div>
+      <PostItemHeader />
       {type === 'image' ? <PostItemContentImage urls={dummyImageURL} /> : <PostItemContentVideo urls={src} />}
       <Stack spacing={'xs'} className="px-5 py-1">
         <div className="flex flex-row items-center">
