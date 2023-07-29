@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import { Notifications } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
 import { NavigationProgress, nprogress } from '@mantine/nprogress';
+import { useEffect } from 'react';
 
 function RouteTransition() {
   const { asPath, events } = useRouter();

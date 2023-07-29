@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 type ExploreSearchProps = {
   currentState: (state: 'blur' | 'focus') => void;
 };
-const ExploreSearch = ({ currentState }: ExploreSearchProps) => {
+function ExploreSearch({ currentState }: ExploreSearchProps) {
   const inputSearchRef = useRef<HTMLInputElement>(null);
 
   const [stateSearch, setStateSearch] = useState<'blur' | 'focus'>('blur');
@@ -45,6 +45,6 @@ const ExploreSearch = ({ currentState }: ExploreSearchProps) => {
       </div>
     </div>
   );
-};
+}
 
 export default ExploreSearch;

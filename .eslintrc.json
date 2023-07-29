@@ -6,23 +6,30 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard-with-typescript"
+        "airbnb",
+        "airbnb-typescript"
     ],
     "overrides": [
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        "project": "./tsconfig.json"
     },
     "plugins": [
-        "react"
+        "react",
+        "import"
     ],
     "rules": {
-        "no-unused-vars":"error",
-        "no-unused-labels":"error",
-        "no-undef":"error",
-        "prefer-const":"error",
-        "prefer-rest-params":"error",
-        "prefer-spread":"error"
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-uses-react": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "react/jsx-props-no-spreading": "off",
+        "implicit-arrow-linebreak":"off",
+        "object-curly-newline": "off",
+        "max-len":["error", { "code": 120 }],
+        "react/jsx-wrap-multilines": "off",
+        "react/require-default-props": "warn",
+        "import/extensions": "off",
+        // Usefull for redux
+        "no-param-reassign": ["error", { "props": false }]
     }
 }

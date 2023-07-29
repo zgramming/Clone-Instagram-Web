@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import { Carousel } from '@mantine/carousel';
 import { AspectRatio, ActionIcon, Stack } from '@mantine/core';
 import {
@@ -11,8 +12,8 @@ import {
   IconBookmark,
 } from '@tabler/icons-react';
 import { useRef, useState, useEffect } from 'react';
-import AvatarImage from '../AvatarImage';
 import Image from 'next/image';
+import AvatarImage from '../AvatarImage';
 
 function PostItemContentImage({ urls }: { urls: string[] }) {
   const isMoreThanOne = urls.length > 1;
@@ -24,7 +25,7 @@ function PostItemContentImage({ urls }: { urls: string[] }) {
           <Carousel withIndicators>
             {urls.map((url) => (
               <Carousel.Slide key={url}>
-                <img height={'100%'} width={'100%'} alt="Image / Video Post" src={url} />
+                <img height="100%" width="100%" alt="Post" src={url} />
               </Carousel.Slide>
             ))}
           </Carousel>
@@ -94,7 +95,7 @@ function PostItemContentVideoItem({ url }: { url: string }) {
 
   return (
     <div className="relative">
-      <video ref={ref} height={'100%'} width={'100%'} onClick={onClick}>
+      <video ref={ref} height="100%" width="100%" onClick={onClick}>
         <source src={url} type="video/mp4" />
       </video>
 
@@ -106,7 +107,7 @@ function PostItemContentVideoItem({ url }: { url: string }) {
       </div>
 
       <div className="absolute bottom-5 right-5 rounded-full bg-gray-700 ">
-        <ActionIcon size={'xs'} onClick={onMute} className="hover:bg-gray-700">
+        <ActionIcon size="xs" onClick={onMute} className="hover:bg-gray-700">
           {isMuted ? <IconVolume3 size="1rem" color="white" /> : <IconVolume size="1rem" color="white" />}
         </ActionIcon>
       </div>
@@ -131,13 +132,12 @@ function PostItemContentVideo({ urls }: { urls: string[] }) {
         </AspectRatio>
       </div>
     );
-  } else {
-    return (
-      <AspectRatio ratio={16 / 9}>
-        <PostItemContentVideoItem url={urls[0]} />
-      </AspectRatio>
-    );
   }
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <PostItemContentVideoItem url={urls[0]} />
+    </AspectRatio>
+  );
 }
 
 function PostItemHeader() {
@@ -145,9 +145,9 @@ function PostItemHeader() {
     <div className="flex flex-row items-center px-5">
       <div className="flex flex-row items-center gap-3">
         <AvatarImage
-          className={'border-[3px] border-solid border-pink-700'}
-          src={`https://picsum.photos/seed/1/200`}
-          size={'md'}
+          className="border-[3px] border-solid border-pink-700"
+          src="https://picsum.photos/seed/1/200"
+          size="md"
         />
         <div className="text-sm font-medium">Username</div>
       </div>
@@ -177,10 +177,10 @@ function PostItem({ type }: { type: 'image' | 'video' }) {
 
   const src = type === 'image' ? dummyImageURL : dummyVideoURL;
   return (
-    <Stack spacing={'xs'} className="pb-5">
+    <Stack spacing="xs" className="pb-5">
       <PostItemHeader />
       {type === 'image' ? <PostItemContentImage urls={dummyImageURL} /> : <PostItemContentVideo urls={src} />}
-      <Stack spacing={'xs'} className="px-5 py-1">
+      <Stack spacing="xs" className="px-5 py-1">
         <div className="flex flex-row items-center">
           <div className="grow flex flex-row items-center gap-4">
             <ActionIcon>
@@ -201,9 +201,9 @@ function PostItem({ type }: { type: 'image' | 'video' }) {
         </div>
         <div className="text-base font-medium">100 likes</div>
         <div className="text-sm">
-          <span className="font-medium">Username</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Cupiditate natus saepe illum dolore assumenda tenetur porro omnis, in hic dolores, minus voluptate optio non?
-          Sed commodi beatae accusamus voluptatum fugiat!
+          <span className="font-medium">Username</span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate natus saepe illum dolore assumenda tenetur
+          porro omnis, in hic dolores, minus voluptate optio non? Sed commodi beatae accusamus voluptatum fugiat!
         </div>
         <div className="text-xs text-gray-500">View all 100 comments</div>
         <div className="text-xs text-gray-500">2 hours ago</div>
@@ -217,7 +217,7 @@ function Posts() {
   return (
     <>
       {dummy.map((_, index) => {
-        let type = index % 2 === 0 ? 'image' : ('video' as 'image' | 'video');
+        const type = index % 2 === 0 ? 'image' : ('video' as 'image' | 'video');
         return <PostItem type={type} />;
       })}
     </>

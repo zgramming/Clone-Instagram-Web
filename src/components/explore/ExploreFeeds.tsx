@@ -1,7 +1,7 @@
 import { Grid, AspectRatio } from '@mantine/core';
 import { IconLayersSubtract, IconDeviceTv } from '@tabler/icons-react';
 
-const ExploreFeeds = () => {
+function ExploreFeeds() {
   const dummy = Array.from({ length: 100 }).map((_, i) => i);
 
   return (
@@ -14,7 +14,7 @@ const ExploreFeeds = () => {
         const randomImage = `https://picsum.photos/seed/${i}/200/300`;
 
         return (
-          <Grid.Col key={i} span={4}>
+          <Grid.Col span={4}>
             <div className="relative">
               <AspectRatio ratio={1 / 1}>
                 <div
@@ -35,6 +35,6 @@ const ExploreFeeds = () => {
       })}
     </Grid>
   );
-};
+}
 
 export default ExploreFeeds;

@@ -1,8 +1,8 @@
-import MantineCustomProvider from '@/contexts/MantineCustomContext';
 import '@/styles/globals.css';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode } from 'react';
+import MantineCustomProvider from '@/contexts/MantineCustomContext';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
