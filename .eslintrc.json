@@ -30,6 +30,7 @@
         "react/jsx-wrap-multilines": "off",
         "react/require-default-props": "warn",
         "import/extensions": "off",
+        
         // Usefull for redux
         "no-param-reassign": ["error", { "props": false }]
     }
