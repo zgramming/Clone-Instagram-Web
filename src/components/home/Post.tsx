@@ -82,15 +82,21 @@ function PostItemContentVideoItem({ url }: { url: string }) {
 
   // Detect if video has ended
   useEffect(() => {
-    if (ref.current) {
-      ref.current.addEventListener('ended', () => {
+    const refCurrent = ref.current;
+    if (refCurrent) {
+      const endedListener = () => {
         // Play it again
-        ref.current?.play();
-      });
+        refCurrent.play();
+      };
+
+      refCurrent.addEventListener('ended', endedListener);
+
+      // Cleanup event listener when component unmount
+      return () => {
+        refCurrent.removeEventListener('ended', endedListener);
+      };
     }
-    return () => {
-      ref.current?.removeEventListener('ended', () => {});
-    };
+    return () => {};
   }, []);
 
   return (

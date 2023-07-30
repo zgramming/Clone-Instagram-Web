@@ -32,6 +32,7 @@ Install application with NPM
 ## Roadmap
 
 - [ ] Play video when element visible in viewport
+- [ ] Reels : When finished long pressed video, don't trigger onClick video (it will make trigger toggleMute after mouseUp onLongPress)
 
 
 ## License

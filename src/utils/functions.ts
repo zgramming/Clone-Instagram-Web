@@ -9,7 +9,7 @@ function formattedNumberReels(number: number): string {
     indexUnit += 1;
   }
 
-  return `${number.toFixed(indexUnit === 0 ? 0 : 1)} ${unit[indexUnit]}`;
+  return `${numberCopy.toFixed(indexUnit === 0 ? 0 : 1)} ${unit[indexUnit]}`;
 }
 
 // eslint-disable-next-line import/prefer-default-export
