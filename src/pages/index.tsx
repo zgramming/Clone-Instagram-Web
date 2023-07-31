@@ -2,14 +2,14 @@ import { Stack } from '@mantine/core';
 import LayoutBottomOrSideNavigation from '@/components/LayoutBottomOrSideNavigation';
 import NavigationBar from '@/components/NavigationBar';
 import Story from '@/components/home/Story';
-import Posts from '@/components/home/Post';
+import PostsHome from '@/components/home/PostHome';
 
 export default function Page() {
   return (
     <Stack spacing="xs" className="relative pb-32">
       <NavigationBar />
       <Story />
-      <Posts />
+      <PostsHome />
     </Stack>
   );
 }

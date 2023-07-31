@@ -7,7 +7,7 @@ function BottomNavigationBar() {
   const { push } = useRouter();
   const onClick = (path: string) => {
     // Shallow routing
-    push(path, undefined, { shallow: true });
+    push(path);
   };
 
   return (

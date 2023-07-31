@@ -37,7 +37,7 @@ function ExploreRecentHistory() {
     });
 
   return (
-    <Stack spacing="md">
+    <Stack spacing="md" className="pb-32">
       <div className="flex flex-row justify-between items-center px-5">
         <div className="text-lg font-semibold">Recent</div>
         <div className="text-sm text-gray-500" onClick={openModalClearHistory} role="presentation">

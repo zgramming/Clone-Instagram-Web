@@ -8,6 +8,7 @@ import ExploreSearch from '@/components/explore/ExploreSearch';
 
 export default function Page() {
   const [stateSearch, setStateSearch] = useState<'blur' | 'focus'>('blur');
+
   return (
     <Stack spacing="md" className="py-3">
       <ExploreSearch currentState={setStateSearch} />

@@ -4,7 +4,7 @@ const routeReels = '/reels';
 const routeDirectInbox = '/direct/inbox';
 const routeDirectInboxNew = '/direct/new';
 const routeDirectThread = (threadId: string) => `/direct/t/${threadId}`;
-const routeProfile = (username: string) => `/${username}`;
+const routeProfile = (username: string) => `/u/${username}`;
 
 const routes = {
   home: routeHome,

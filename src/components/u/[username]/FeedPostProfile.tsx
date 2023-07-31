@@ -1,16 +1,14 @@
 import { Grid, AspectRatio } from '@mantine/core';
 import { IconLayersSubtract, IconDeviceTv } from '@tabler/icons-react';
 
-function ExploreFeeds() {
+function FeedsPostProfile() {
   const dummy = Array.from({ length: 100 }).map((_, i) => i);
 
   return (
-    <Grid gutter={2} className="pb-32">
+    <Grid gutter={2}>
       {dummy.map((_, i) => {
         const randomColorByIndex = Math.floor(Math.random() * 16777215).toString(16);
-
         const typeFeed = i % 2 === 0 ? 'image' : ('video' as 'image' | 'video');
-
         const randomImage = `https://picsum.photos/seed/${i}/200/300`;
 
         return (
@@ -37,4 +35,4 @@ function ExploreFeeds() {
   );
 }
 
-export default ExploreFeeds;
+export default FeedsPostProfile;

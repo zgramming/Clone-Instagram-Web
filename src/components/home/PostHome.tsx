@@ -179,7 +179,6 @@ function PostItem({ type }: { type: 'image' | 'video' }) {
     'https://picsum.photos/seed/4/200',
     'https://picsum.photos/seed/5/200',
   ];
-  // const dummyImageURL = ['https://picsum.photos/seed/1/200'];
 
   const src = type === 'image' ? dummyImageURL : dummyVideoURL;
   return (
@@ -218,7 +217,7 @@ function PostItem({ type }: { type: 'image' | 'video' }) {
   );
 }
 
-function Posts() {
+function PostsHome() {
   const dummy = Array.from({ length: 3 });
   return (
     <>
@@ -230,4 +229,4 @@ function Posts() {
   );
 }
 
-export default Posts;
+export default PostsHome;
