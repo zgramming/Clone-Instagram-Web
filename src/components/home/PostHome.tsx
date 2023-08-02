@@ -223,7 +223,8 @@ function PostsHome() {
     <>
       {dummy.map((_, index) => {
         const type = index % 2 === 0 ? 'image' : ('video' as 'image' | 'video');
-        return <PostItem type={type} />;
+        const randomKey = Math.random().toString(36).substring(7);
+        return <PostItem key={randomKey} type={type} />;
       })}
     </>
   );

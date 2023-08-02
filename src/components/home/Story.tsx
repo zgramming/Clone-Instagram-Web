@@ -43,10 +43,11 @@ function Story() {
   return (
     <div className="overflow-x-auto px-5 py-2 shadow-md">
       <Group spacing="md" noWrap>
-        <StoryCircle index={0} isMe />
-        {dummy.map((_, index) => (
-          <StoryCircle index={index} />
-        ))}
+        <StoryCircle key="1" index={0} isMe />
+        {dummy.map((_, index) => {
+          const randomKey = Math.random().toString(36).substring(7);
+          return <StoryCircle key={randomKey} index={index} />;
+        })}
       </Group>
     </div>
   );
