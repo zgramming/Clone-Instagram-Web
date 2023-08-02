@@ -1,6 +1,8 @@
 import { Stack, ActionIcon, Group } from '@mantine/core';
 import { IconPlus } from '@tabler/icons-react';
+import Link from 'next/link';
 import AvatarImage from '../AvatarImage';
+import routes from '@/utils/routes';
 
 type StoryCircleProps = {
   index: number;
@@ -10,11 +12,13 @@ function StoryCircle({ index, isMe = false }: StoryCircleProps) {
   return (
     <Stack spacing="xs">
       <div className="h-16 relative flex flex-col items-center justify-center">
-        <AvatarImage
-          className={!isMe ? 'border-[3px] border-solid border-pink-700' : ''}
-          size="lg"
-          src={`https://picsum.photos/seed/${index}/200`}
-        />
+        <Link href={routes.stories('zeffry-reynando', '123')}>
+          <AvatarImage
+            className={!isMe ? 'border-[3px] border-solid border-pink-700' : ''}
+            size="lg"
+            src={`https://picsum.photos/seed/${index}/200`}
+          />
+        </Link>
         {isMe && (
           <div className="absolute bottom-0 right-0 rounded-full border-[1px] border-solid border-white bg-sky-500">
             <ActionIcon size="xs">
@@ -24,9 +28,7 @@ function StoryCircle({ index, isMe = false }: StoryCircleProps) {
         )}
       </div>
       <div className="flex flex-col items-center justify-center ">
-        <div className="text-center text-xs  line-clamp-1 text-ellipsis ">
-          {isMe ? 'Your Story asdasdad' : 'Username'}
-        </div>
+        <div className="text-center text-xs  line-clamp-1 text-ellipsis ">{isMe ? 'Your Story' : 'Username'}</div>
       </div>
     </Stack>
   );

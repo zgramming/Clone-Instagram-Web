@@ -1,4 +1,5 @@
 const routeHome = '/';
+const routeStories = (username: string, idStory: string) => `/stories/${username}/${idStory}`;
 const routeExplore = '/explore';
 const routeReels = '/reels';
 const routeDirectInbox = '/direct/inbox';
@@ -8,6 +9,7 @@ const routeProfile = (username: string) => `/u/${username}`;
 
 const routes = {
   home: routeHome,
+  stories: routeStories,
   explore: routeExplore,
   reels: routeReels,
   directInbox: routeDirectInbox,

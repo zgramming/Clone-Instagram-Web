@@ -33,6 +33,7 @@ Install application with NPM
 
 - [ ] Play video when element visible in viewport
 - [ ] Reels : When finished long pressed video, don't trigger onClick video (it will make trigger toggleMute after mouseUp onLongPress)
+- [ ] Story: Animation 3D Like Instagram Story
 
 
 ## License
